@@ -1,0 +1,57 @@
+/**
+* Generated theme by Material Theme Generator
+* https://materialtheme.arcsine.dev
+* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48Izc1NzU3NSIsIj9lcjwjZDZkNmQ2IiwiO2VyPCM1ODU4NTh$LCIlPmBePCMwMDk3YTciLCI~ZXI8I2IzZTBlNSIsIjtlcjwjMDA3YThjfiwid2Fybj5gXjwjYjAwMDIwIiwiP2VyPCNlN2IzYmMiLCI7ZXI8Izk3MDAxM34sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmZmZmZmIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMyMTIxMjF$LCJmb250cz5bYEA8KC00IiwiZmFtaWx5PFJvYm90byBTbGFifixgQDwoLTMiLCJmYW1pbHk8Um9ib3RvIFNsYWJ$LGBAPCgtMiIsImZhbWlseTxSb2JvdG8gU2xhYn4sYEA8KC0xIiwiZmFtaWx5PFJvYm90byBTbGFifixgQDxoZWFkbGluZSIsImZhbWlseTxSb2JvdG8gU2xhYn4sYEA8dGl0bGUiLCJmYW1pbHk8Um9ib3RvIFNsYWJ$LGBAPHN1YiktMiIsImZhbWlseTxSb2JvdG8gU2xhYn4sYEA8c3ViKS0xIiwiZmFtaWx5PFJvYm90byBTbGFifixgQDxib2R5LTIiLCJmYW1pbHk8Um9ib3RvIFNsYWJ$LGBAPGJvZHktMSIsImZhbWlseTxSb2JvdG8gU2xhYn4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxUd29Ub25lIiwiP25lc3M$ZmFsc2UsInZlcnNpb24$MTN9
+*/
+
+
+$mat-light-theme-foreground: (
+  base:              black,
+  divider:           $dark-dividers,
+  dividers:          $dark-dividers,
+  disabled:          $dark-disabled-text,
+  disabled-button:   rgba($dark-text, 0.26),
+  disabled-text:     $dark-disabled-text,
+  elevation:         black,
+  secondary-text:    $dark-accent-text,
+  hint-text:         $dark-disabled-text,
+  accent-text:       $dark-accent-text,
+  icon:              $dark-accent-text,
+  icons:             $dark-accent-text,
+  text:              $dark-primary-text,
+  slider-min:        $dark-primary-text,
+  slider-off:        rgba($dark-text, 0.26),
+  slider-off-active: $dark-disabled-text,
+);
+
+$mat-light-theme-background: (
+  background:               $light-background,
+  status-bar:               $light-bg-darker-20,
+  app-bar:                  $light-bg-darker-5,
+  hover:                    $dark-bg-alpha-4,
+  card:                     $light-bg-lighter-5,
+  dialog:                   $light-bg-lighter-5,
+  tooltip:                  $dark-bg-tooltip,
+  disabled-button:          $dark-bg-alpha-12,
+  raised-button:            $light-bg-lighter-5,
+  focused-button:           $dark-focused,
+  selected-button:          $light-bg-darker-20,
+  selected-disabled-button: $light-bg-darker-30,
+  disabled-button-toggle:   $light-bg-darker-10,
+  unselected-chip:          $light-bg-darker-10,
+  disabled-list-option:     $light-bg-darker-10,
+);
+
+$light-theme: (
+  primary: $theme-primary,
+  accent: $theme-accent,
+  warn: $theme-warn,
+  is-dark: true,
+  foreground: $mat-light-theme-foreground,
+  background: $mat-light-theme-background,
+);
+
+
+.light-theme {
+  @include mat.all-component-themes($light-theme);
+}
