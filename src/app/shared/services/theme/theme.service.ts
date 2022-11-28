@@ -24,10 +24,6 @@ export class ThemeService {
     map(([, currentTheme]) => currentTheme)
   );
 
-  constructor() {
-    this.theme$.subscribe();
-  }
-
   changeTheme(theme: Themes) {
     this.themeSubject$.next(theme);
   }

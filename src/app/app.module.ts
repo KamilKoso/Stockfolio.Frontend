@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateCompiler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -10,10 +10,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { FeaturesModule } from './features/features.module';
 import { MainModule } from './main/main.module';
-import { HttpAuthInterceptor } from './shared/interceptors/http-auth-interceptor';
-import { HttpErrorInterceptor } from './shared/interceptors/http-error-interceptor';
-import { HttpRetryInterceptor } from './shared/interceptors/http-retry.interceptor';
-import { UserService } from './shared/services/user/user.service';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -21,9 +17,9 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FeaturesModule,
     AppRoutingModule,
     MainModule,
-    FeaturesModule,
     SharedModule,
 
     TranslateModule.forRoot({
@@ -39,11 +35,7 @@ import { SharedModule } from './shared/shared.module';
       },
     }),
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true, deps: [UserService] },
-    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true, deps: [UserService] },
-    { provide: HTTP_INTERCEPTORS, useClass: HttpRetryInterceptor, multi: true, deps: [UserService] },
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

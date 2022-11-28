@@ -1,0 +1,45 @@
+$breakpoints: (
+  // Extra small devices (portrait phones: less than 576px)
+  XS: 575.98px,
+  // Small devices (landscape phones: less than 768px)
+  SM: 767.98px,
+  // Medium devices (tablets: less than 992px)
+  MD: 991.98px,
+  // Large devices (desktops: less than 1200px)
+  LG: 1199.98px,
+  // Extra large devices (large desktops)
+  XL: 1399.98px
+) !default;
+
+@mixin breakpoint-up($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "`#{$breakpoint}` is not defined breakpoint." +
+          "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin breakpoint-down($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "`#{$breakpoint}` is not defined breakpoint." +
+          "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin breakpoint-between($breakpointDown, $breakpointUp) {
+  @if map-has-key($breakpoints, $breakpointDown) and map-has-key($breakpoints, $breakpointUp) {
+    @media (min-width: map-get($breakpoints, $breakpointDown)) and (max-width: map-get($breakpoints, $breakpointUp)) {
+      @content;
+    }
+  } @else {
+    @warn "`#{$breakpointDown}` or `#{$breakpointUp}` is not defined breakpoint." +
+          "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

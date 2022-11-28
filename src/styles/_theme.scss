@@ -4,16 +4,15 @@
 @import 'themes/dark-theme';
 
 // Fonts
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone';
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 $fontConfig: (
   display-4: mat.define-typography-level(112px, 112px, 300, 'Roboto Slab', -0.0134em),
   display-3: mat.define-typography-level(56px, 56px, 400, 'Roboto Slab', -0.0089em),
-  display-2: mat.define-typography-level(45px, 48px, 400, 'Roboto Slab', 0.0000em),
+  display-2: mat.define-typography-level(45px, 48px, 400, 'Roboto Slab', 0em),
   display-1: mat.define-typography-level(34px, 40px, 400, 'Roboto Slab', 0.0074em),
-  headline: mat.define-typography-level(24px, 32px, 400, 'Roboto Slab', 0.0000em),
+  headline: mat.define-typography-level(24px, 32px, 400, 'Roboto Slab', 0em),
   title: mat.define-typography-level(20px, 32px, 500, 'Roboto Slab', 0.0075em),
   subheading-2: mat.define-typography-level(16px, 28px, 400, 'Roboto Slab', 0.0094em),
   subheading-1: mat.define-typography-level(15px, 24px, 500, 'Roboto Slab', 0.0067em),
@@ -21,7 +20,7 @@ $fontConfig: (
   body-1: mat.define-typography-level(14px, 20px, 400, 'Roboto Slab', 0.0179em),
   button: mat.define-typography-level(14px, 14px, 500, 'Roboto', 0.0893em),
   caption: mat.define-typography-level(12px, 20px, 400, 'Roboto', 0.0333em),
-  input: mat.define-typography-level(inherit, 1.125, 400, 'Roboto', 1.5px)
+  input: mat.define-typography-level(inherit, 1.125, 400, 'Roboto', 1.5px),
 );
 
 // Compute font config
@@ -47,9 +46,6 @@ body {
   --text-accent-darker-color: #{$light-primary-text};
 }
 
-
-
-
 body {
   --warn-color: #b00020;
   --warn-lighter-color: #e7b3bc;
@@ -59,25 +55,27 @@ body {
   --text-warn-darker-color: #{$light-primary-text};
 }
 
-
 // Specific component overrides, pieces that are not in line with the general theming
 // Handle buttons appropriately, with respect to line-height
 
-.mat-raised-button, .mat-stroked-button, .mat-flat-button {
+.mat-raised-button,
+.mat-stroked-button,
+.mat-flat-button {
   padding: 0 1.15em;
-  margin: 0 .65em;
+  margin: 0 0.65em;
   min-width: 3em;
-  line-height: 36.4px
+  line-height: 36.4px;
 }
 
 .mat-standard-chip {
-  padding: .5em .85em;
+  padding: 0.5em 0.85em;
   min-height: 2.5em;
 }
 
 .material-icons {
   font-size: 24px;
-  font-family: 'Material Icons Two Tone', 'Material Icons';
+  font-family: 'Material Icons';
+
   .mat-badge-content {
     font-family: 'Roboto';
   }

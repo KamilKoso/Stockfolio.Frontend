@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { filter, switchMap } from 'rxjs';
+import { distinctUntilChanged, filter, map, startWith, switchMap } from 'rxjs';
+import { ScrollDirection } from 'src/app/shared/services/scroll/scroll-direction';
+import { ScrollService } from 'src/app/shared/services/scroll/scroll.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
@@ -9,13 +11,20 @@ import { UserService } from 'src/app/shared/services/user/user.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent {
-  authStatus$ = this.authService.isLoggedIn$;
+  authStatus$ = this._userService.isLoggedIn$;
   user$ = this.authStatus$.pipe(
     filter(isAuthenticated => !isAuthenticated),
-    switchMap(() => this.authService.user$)
+    switchMap(() => this._userService.user$)
   );
 
-  constructor(private authService: UserService) {}
+  isOnTop$ = this._scrollService.windowScrollOffset$.pipe(map(offsetPercentage => offsetPercentage > 0));
+  shouldHideNavbar$ = this._scrollService.scrollDirection$.pipe(
+    map((scrollDirection: ScrollDirection) => scrollDirection == ScrollDirection.DOWN),
+    startWith(false),
+    distinctUntilChanged()
+  );
+
+  constructor(private _userService: UserService, private _scrollService: ScrollService) {}
 
   signout() {}
 }
