@@ -1,24 +1,14 @@
+<ngx-loading-bar height="2px" [includeSpinner]="false"></ngx-loading-bar>
 <mat-toolbar class="navbar" [class.mat-elevation-z8]="isOnTop$ | async" [class.hideNavbar]="shouldHideNavbar$ | async">
-  <a class="nav-title" routerLink="/"> Stockfolio</a>
+  <a class="nav-title" routerLink="/">Stockfolio</a>
 
-  <div class="menu">
-    <ng-container *ngTemplateOutlet="navbarItems"></ng-container>
-  </div>
+   <ng-container *ngIf="(authStatus$ | async) === false">
+    <a mat-button class="login-btn" routerLinkActive="menu-item-active" routerLink="/login"> <mat-icon>person</mat-icon> Login </a>
+  </ng-container>
 
-  <button mat-icon-button class="menu-mobile" [matMenuTriggerFor]="mobileMenu"><mat-icon>more_vert</mat-icon></button>
-  <mat-menu #mobileMenu="matMenu">
-    <ng-container *ngTemplateOutlet="navbarItems"></ng-container>
-  </mat-menu>
+  <ng-container *ngIf="user$ | async as user">
+    <stockfolio-quotes-serach-bar></stockfolio-quotes-serach-bar>
+    <button mat-icon-button class="avatar"><mat-icon>account_circle</mat-icon></button>
+  </ng-container>
 </mat-toolbar>
 
-<ng-template #navbarItems>
-  <nav *ngIf="(authStatus$ | async) === false">
-    <a mat-button routerLinkActive="menu-item-active" routerLink="/login"> <mat-icon>person</mat-icon> Login </a>
-  </nav>
-
-  <nav *ngIf="user$ | async as user">
-    <a mat-button routerLinkActive="menu-item-active" routerLink="/history"> <mat-icon>history</mat-icon> History </a>
-    <a mat-button routerLinkActive="menu-item-active" (click)="signout()"> <mat-icon>account_circle</mat-icon> Manage Account </a>
-    <a mat-button routerLinkActive="menu-item-active" (click)="signout()"> <mat-icon>exit_to_app</mat-icon> Signout {{ user.email }} </a>
-  </nav>
-</ng-template>

@@ -7,32 +7,38 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatErrorMessagesComponent } from './components/mat-error-messages/mat-error-messages.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+
 
 @NgModule({
-  declarations: [
-    MatErrorMessagesComponent
+  imports: [
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule,
+    MatCheckboxModule,
+    MatAutocompleteModule,
+    MatProgressSpinnerModule,
   ],
-    imports: [
-        MatButtonModule,
-        MatCardModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatGridListModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatMenuModule
-    ],
-    exports: [
-        MatButtonModule,
-        MatCardModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatGridListModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatMenuModule,
-        MatErrorMessagesComponent
-    ]
+  exports: [
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule,
+    MatCheckboxModule,
+    MatAutocompleteModule,
+    MatProgressSpinnerModule,
+  ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

@@ -12,7 +12,7 @@ import { RequestData } from './request-data';
 export class StockfolioHttpClient {
   constructor(private readonly _http: HttpClient) {}
 
-  get<T>(uriTemplate: string, queryParameters?: QueryParameters): Observable<T> {
+  get<T>(uriTemplate: string, queryParameters?: QueryParameters, ): Observable<T> {
     const url: string = this.buildUrl(uriTemplate, queryParameters?.segmentParams, queryParameters?.queryParams);
     return this._http.get<T>(url);
   }

@@ -4,6 +4,28 @@
 * Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48Izc1NzU3NSIsIj9lcjwjZDZkNmQ2IiwiO2VyPCM1ODU4NTh$LCIlPmBePCMwMDk3YTciLCI~ZXI8I2IzZTBlNSIsIjtlcjwjMDA3YThjfiwid2Fybj5gXjwjYjAwMDIwIiwiP2VyPCNlN2IzYmMiLCI7ZXI8Izk3MDAxM34sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmZmZmZmIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMyMTIxMjF$LCJmb250cz5bYEA8KC00IiwiZmFtaWx5PFJvYm90byBTbGFifixgQDwoLTMiLCJmYW1pbHk8Um9ib3RvIFNsYWJ$LGBAPCgtMiIsImZhbWlseTxSb2JvdG8gU2xhYn4sYEA8KC0xIiwiZmFtaWx5PFJvYm90byBTbGFifixgQDxoZWFkbGluZSIsImZhbWlseTxSb2JvdG8gU2xhYn4sYEA8dGl0bGUiLCJmYW1pbHk8Um9ib3RvIFNsYWJ$LGBAPHN1YiktMiIsImZhbWlseTxSb2JvdG8gU2xhYn4sYEA8c3ViKS0xIiwiZmFtaWx5PFJvYm90byBTbGFifixgQDxib2R5LTIiLCJmYW1pbHk8Um9ib3RvIFNsYWJ$LGBAPGJvZHktMSIsImZhbWlseTxSb2JvdG8gU2xhYn4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxUd29Ub25lIiwiP25lc3M$ZmFsc2UsInZlcnNpb24$MTN9
 */
 
+@mixin generateColors($prefix, $palette) {
+  $colors-map: ();
+
+  @each $key, $value in $palette {
+    @if $key !=contrast {
+      .stockfolio-#{$prefix}-#{$key} {
+        color: map-get($palette, $key);
+      }
+
+    $map: ();
+    $map: map-merge($map, ($key: $value));
+    $colors-map: map-merge($colors-map, $map);
+    }
+  }
+
+  :root {
+    @each $key, $value in $colors-map {
+      --stockfolio-#{$prefix}-#{$key}: #{$value};
+    }
+  }
+}
+
 $mat-light-theme-foreground: (
   base: black,
   divider: $dark-dividers,
@@ -50,7 +72,10 @@ $light-theme: (
   background: $mat-light-theme-background,
 );
 
-.stockfolio-light-theme {
+:root.stockfolio-light-theme {
+  --stockfolio-background-color: #{$light-background};
+  --stockfolio-background-color-20: #{$light-bg-darker-20};
+  --stockfolio-background-color-10: #{$light-bg-darker-10};
+  --stockfolio-background-color-5: #{$light-bg-darker-5};
   @include mat.all-component-themes($light-theme);
-  color: $dark-primary-text;
 }

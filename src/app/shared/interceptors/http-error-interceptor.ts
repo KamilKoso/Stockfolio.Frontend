@@ -3,11 +3,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ApiHealthCheckService } from '../services/health-check/api-health-check.service';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
-  constructor(private _router: Router, private _apiHealthCheckService: ApiHealthCheckService) {}
+  constructor(private _router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
@@ -21,6 +20,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   }
 
   handleHttpErrors(err: HttpErrorResponse) {
+      console.log(err.status);
     switch (err.status) {
       case 0: {
         this.handle0StatusCode();

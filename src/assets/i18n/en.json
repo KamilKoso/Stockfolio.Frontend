@@ -1,0 +1,31 @@
+{
+  "validation": {
+    "required": "This field is required.",
+    "minlength": "This field has to have at least {requiredLength} characters."
+  },
+  "auth": {
+    "login": {
+      "loginHeader": "Log in",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "rememberMe": "Remember me",
+      "loginButton": "Log in"
+    }
+  },
+  "apiErrors": {
+    "invalid_credentials": "Email or password is invalid.",
+    "user_not_active": "This account is not active.",
+    "invalid_email_address_format": "Provided email has incorrect format."
+  },
+  "navbar": {
+    "searchbar": {
+      "placeholder": "Search for stocks..."
+    },
+    "searchResults": {
+      "summary": "Found {count} search {count, plural, =0{results} one{result} other{results}} in {responseTimeMs}ms.",
+      "notFound": "Couldn't find stocks matching this query."
+    }
+  }
+}
+
+

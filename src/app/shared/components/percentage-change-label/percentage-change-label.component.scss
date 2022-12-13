@@ -1,0 +1,30 @@
+@import 'variables';
+
+.percentage-change-label {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 5px;
+  max-width: 100px;
+  margin: 0 auto;
+}
+
+.mat-icon {
+  margin-right: 5px;
+}
+
+.no-change {
+  color: $no-price-change-text;
+  background-color: $no-price-change-background
+}
+
+.positive-change {
+  color: $price-gain-text;
+  background-color: $price-gain-background;
+}
+
+.negative-change {
+  color: $price-loss-text;
+  background-color: $price-loss-background;
+}

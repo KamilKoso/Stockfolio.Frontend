@@ -1,0 +1,44 @@
+:host {
+  width: 60%;
+}
+
+::ng-deep .mat-autocomplete-panel.max-height-512 {
+ max-height: 512px !important;
+}
+
+.search {
+  width: 100% !important;
+  font-size: 12px;
+}
+
+::ng-deep .mat-option {
+  height: 50px !important;
+  line-height: 20px !important;
+}
+
+.summary {
+  user-select: none;
+  font-size: 9px;
+  padding: 0 16px;
+  color: var(--stockfolio-primary-200)
+}
+
+.search-item-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  .symbol {
+  font-size: 10px;
+  color: var(--stockfolio-primary-darker);
+  font-weight: bold;
+  width: 10px;
+}
+
+.price {
+  grid-row: span 2;
+  margin: auto 0 auto auto;
+}
+}
+
+

@@ -50,7 +50,12 @@ $dark-theme: (
   background: $mat-dark-theme-background,
 );
 
-.stockfolio-dark-theme {
+:root.stockfolio-dark-theme {
+  --stockfolio-background-color: #{$dark-background};
+  --stockfolio-background-color-20: #{$dark-bg-lighter-20};
+  --stockfolio-background-color-10: #{$dark-bg-lighter-10};
+  --stockfolio-background-color-5: #{$dark-bg-lighter-5};
   @include mat.all-component-themes($dark-theme);
-  // color: $light-text;
 }
+
+

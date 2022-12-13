@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
 import { FeaturesRoutingModule } from './features.routing.module';
 
 @NgModule({
-  imports: [FeaturesRoutingModule],
+  imports: [SharedModule, FeaturesRoutingModule],
   declarations: [],
   exports: [],
 })

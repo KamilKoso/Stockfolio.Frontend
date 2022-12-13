@@ -1,3 +1,33 @@
+
+@mixin generateColors($prefix, $palette) {
+  $colors-map: ();
+
+  @each $key, $value in $palette {
+    @if $key !=contrast {
+      .stockfolio-#{$prefix}-#{$key} {
+        color: map-get($palette, $key);
+      }
+
+    $map: ();
+    $map: map-merge($map, ($key: $value));
+    $colors-map: map-merge($colors-map, $map);
+    }
+  }
+
+  :root {
+    @each $key, $value in $colors-map {
+      --stockfolio-#{$prefix}-#{$key}: #{$value};
+    }
+  }
+}
+
+@mixin generate-material-classes {
+   @include generateColors(primary, $mat-primary);
+   @include generateColors(accent, $mat-accent);
+   @include generateColors(warning, $mat-warn);
+}
+
+
 $mat-primary: (
   main: #757575,
   lighter: #d6d6d6,
@@ -37,3 +67,7 @@ $mat-warn: (
   )
 );
 $theme-warn: mat.define-palette($mat-warn, main, lighter, darker);
+
+@include generate-material-classes();
+
+

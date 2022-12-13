@@ -9,8 +9,10 @@ import { Themes } from './themes-enum';
 })
 export class ThemeService {
   private localStorageThemeKey = 'stockfolio-theme';
-  private body = document.getElementsByTagName('body')[0];
-  private themeSubject$: BehaviorSubject<Themes> = new BehaviorSubject((localStorage.getItem(this.localStorageThemeKey) as Themes) ?? Themes.Light);
+  private body = document.documentElement;
+  private themeSubject$: BehaviorSubject<Themes> = new BehaviorSubject(
+    (localStorage.getItem(this.localStorageThemeKey) as Themes) ?? Themes.Light
+  );
 
   public theme$: Observable<Themes> = this.themeSubject$.pipe(
     pairwiseStartWith(null),

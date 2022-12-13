@@ -35,3 +35,14 @@ $dark-bg-lighter-20:  lighten($dark-background, 20%);
 $dark-bg-lighter-30:  lighten($dark-background, 30%);
 $light-bg-alpha-4:    rgba(#ffffff, 0.04);
 $light-bg-alpha-12:   rgba(#ffffff, 0.12);
+
+// Price changes
+$price-gain-text: #198f40;
+$price-gain-background: transparentize(lighten($price-gain-text, 0.9), 0.9);
+
+$no-price-change-text: #545a5e;
+$no-price-change-background: transparentize(lighten($no-price-change-text, 0.9), 0.9);
+
+
+$price-loss-text: #c71313;
+$price-loss-background: transparentize(lighten($price-loss-text, 0.9), 0.9);

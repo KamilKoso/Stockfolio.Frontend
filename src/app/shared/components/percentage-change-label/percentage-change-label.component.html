@@ -1,0 +1,3 @@
+<div class="percentage-change-label" [ngClass]="{'no-change': percentage === 0, 'positive-change': percentage > 0, 'negative-change': percentage < 0 }">
+    <mat-icon class="small" *ngIf="percentage !== 0">{{ percentage > 0 ? 'trending_up' : 'trending_down' }}</mat-icon>{{ percentage | absoluteNumber | number: '.2-2'  }}%
+</div>
