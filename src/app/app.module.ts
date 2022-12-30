@@ -23,7 +23,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
 
     TranslateModule.forRoot({
-      defaultLanguage: 'en',
+      defaultLanguage: 'en-US',
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,

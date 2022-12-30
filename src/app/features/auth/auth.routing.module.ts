@@ -9,12 +9,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    // canActivate: [IsNotLoggedInGuard],
+    canActivate: [IsNotLoggedInGuard],
   },
   {
     path: 'register',
     component: RegisterComponent,
-    // canActivate: [IsNotLoggedInGuard],
+    canActivate: [IsNotLoggedInGuard],
   },
 ];
 

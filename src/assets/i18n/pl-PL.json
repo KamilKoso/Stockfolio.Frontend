@@ -1,0 +1,41 @@
+{
+  "validation": {
+    "required": "To pole jest wymagane.",
+    "minlength": "Wpisz minimum {requiredLength} znaków."
+  },
+  "auth": {
+    "login": {
+      "loginHeader": "Zaloguj sie",
+      "emailLabel": "Email",
+      "passwordLabel": "Hasło",
+      "rememberMe": "Nie wylogowuj mnie",
+      "loginButton": "Zaloguj"
+    }
+  },
+  "apiErrors": {
+    "invalid_credentials": "Email lub hasło jest nieprawidłowe.",
+    "user_not_active": "Konto nie jest aktywne.",
+    "invalid_email_address_format": "Podany email ma niepoprawny format."
+  },
+  "navbar": {
+    "user-info-menu": {
+      "sign-out-button": "Wyloguj się",
+      "language-button": "Język",
+      "theme-button": "Wygląd",
+      "languageTabTitle": "Wybierz język",
+      "themeTabTitle": "Wygląd",
+      "themes": {
+        "stockfolio-detect-device-theme": "Tryb urządzenia",
+        "stockfolio-dark-theme": "Ciemny motyw",
+        "stockfolio-light-theme": "Jasny motyw"
+      }
+    },
+    "searchbar": {
+      "placeholder": "Szukaj akcji..."
+    },
+    "searchResults": {
+      "summary": "Znaleziono {count} {count, plural, =0{wyników} one{wynik} other{wyników}} wyszukiwania w {responseTimeMs}ms.",
+      "notFound": "Nie udało się znaleźć akcji pasujących do tego zapytania."
+    }
+  }
+}

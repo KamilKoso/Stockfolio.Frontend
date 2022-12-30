@@ -12,14 +12,5 @@ export class AppComponent {
   constructor(_userService: UserService, _themeService: ThemeService) {
     _userService.getUser().subscribe();
     _themeService.theme$.subscribe();
-    this.getUsersLocale();
-  }
-
-  getUsersLocale(): string {
-    const wn = window.navigator as any;
-    let lang = wn.languages[0];
-    lang = lang || wn.language || wn.browserLanguage || wn.userLanguage;
-    console.log(lang);
-    return lang;
   }
 }

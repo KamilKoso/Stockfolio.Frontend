@@ -8,6 +8,7 @@
         "project": "tsconfig.json",
         "createDefaultProgram": true
       },
+      "plugins": ["unused-imports"],
       "extends": ["plugin:@angular-eslint/recommended", "plugin:@angular-eslint/template/process-inline-templates"],
       "rules": {
         "@angular-eslint/directive-selector": [
@@ -25,7 +26,8 @@
             "prefix": "stockfolio",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "unused-imports/no-unused-imports": "error"
       }
     },
     {

@@ -18,6 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PercentageChangeLabelComponent } from './components/percentage-change-label/percentage-change-label.component';
 import { AbsoluteNumberPipe } from './pipes/absolute-number.pipe';
 import { StockfolioCurrencyPipe } from './pipes/stockfolio-currency.pipe';
+import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 
 const imports = [
   CommonModule,
@@ -28,7 +29,7 @@ const imports = [
   LoadingBarHttpClientModule,
   TranslateModule,
 ];
-const components = [StockfolioErrorMessageComponent, PercentageChangeLabelComponent];
+const components = [StockfolioErrorMessageComponent, PercentageChangeLabelComponent, UserAvatarComponent];
 const directives = [ShowPasswordDirective, StockfolioButtonWithSpinnerDirective, StockfolioTooltipOnOverflowDirective];
 const pipes = [ApiErrorTranslatedPipe, AbsoluteNumberPipe, StockfolioCurrencyPipe];
 

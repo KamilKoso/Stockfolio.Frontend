@@ -44,4 +44,12 @@
   &.flex-column {
     flex-direction: column;
   }
+
+  &.flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  .flex-basis-100 {
+    flex-basis: 100%;
+  }
 }

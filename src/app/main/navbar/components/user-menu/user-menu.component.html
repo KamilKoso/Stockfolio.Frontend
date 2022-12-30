@@ -1,0 +1,57 @@
+<div class="user-menu-content" @preventInitialRenderChildAnimations>
+  <div *ngIf="view === views.Initial" @tabSwitchAnimation>
+    <div class="user-info-section section-divider">
+      <stockfolio-user-avatar class="avatar"></stockfolio-user-avatar>
+      <span>{{ user.email }}</span>
+    </div>
+    <div class="section-divider menu-items-group">
+      <button mat-menu-item (click)="changeView(views.LanguageSelect, $event)">
+        <mat-icon>translate</mat-icon>
+        <span>{{ 'navbar.user-info-menu.language-button' | translate }}:&nbsp;</span>
+        <span> {{ (currentLang$ | async).displayName }}</span>
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+      <button mat-menu-item (click)="changeView(views.ThemeSelect, $event)">
+        <mat-icon fontSet="material-icons-outlined">mode_night</mat-icon>
+        <span>{{ 'navbar.user-info-menu.theme-button' | translate }}:&nbsp;</span>
+        <span>{{ 'navbar.user-info-menu.themes.' + (currentTheme$ | async) | translate }}</span>
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+    <div class="menu-items-group">
+      <button mat-menu-item (click)="signOut()">
+        <mat-icon>logout</mat-icon>
+        <span>{{ 'navbar.user-info-menu.sign-out-button' | translate }}</span>
+      </button>
+    </div>
+  </div>
+
+  <stockfolio-user-menu-tab
+    *ngIf="view === views.LanguageSelect"
+    [title]="'navbar.user-info-menu.languageTabTitle' | translate"
+    (backButtonClick)="changeView(views.Initial, $event)"
+    @tabSwitchAnimation>
+    <ng-container *ngIf="currentLang$ | async as currentLang">
+      <button
+        mat-menu-item
+        *ngFor="let lang of supportedLanguages"
+        class="selectable-list-item"
+        (click)="changeLanguage(lang.code, $event)">
+        <mat-icon color="accent" *ngIf="currentLang.code === lang.code">check</mat-icon> <span>{{ lang.displayName }}</span>
+      </button>
+    </ng-container>
+  </stockfolio-user-menu-tab>
+
+  <stockfolio-user-menu-tab
+    *ngIf="view === views.ThemeSelect"
+    [title]="'navbar.user-info-menu.themeTabTitle' | translate"
+    (backButtonClick)="changeView(views.Initial, $event)"
+    @tabSwitchAnimation>
+    <ng-container *ngIf="currentTheme$ | async as currentTheme">
+      <button mat-menu-item *ngFor="let theme of supportedThemes" class="selectable-list-item" (click)="changeTheme(theme, $event)">
+        <mat-icon color="accent" *ngIf="currentTheme === theme">check</mat-icon>
+        <span>{{ 'navbar.user-info-menu.themes.' + theme | translate }}</span>
+      </button>
+    </ng-container>
+  </stockfolio-user-menu-tab>
+</div>

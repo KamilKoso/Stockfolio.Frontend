@@ -18,6 +18,18 @@
     "invalid_email_address_format": "Provided email has incorrect format."
   },
   "navbar": {
+    "user-info-menu": {
+      "sign-out-button": "Sign out",
+      "language-button": "Language",
+      "theme-button": "Theme",
+      "languageTabTitle": "Choose language",
+      "themeTabTitle": "Theme",
+      "themes": {
+        "stockfolio-detect-device-theme": "Device theme",
+        "stockfolio-dark-theme": "Dark theme",
+        "stockfolio-light-theme": "Light theme"
+      }
+    },
     "searchbar": {
       "placeholder": "Search for stocks..."
     },
@@ -27,5 +39,3 @@
     }
   }
 }
-
-

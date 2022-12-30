@@ -8,18 +8,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 $fontConfig: (
-  display-4: mat.define-typography-level(110px, 112px, 300, 'Roboto Slab', -0.0134em),
-  display-3: mat.define-typography-level(54px, 56px, 400, 'Roboto Slab', -0.0089em),
-  display-2: mat.define-typography-level(43px, 48px, 400, 'Roboto Slab', 0em),
-  display-1: mat.define-typography-level(32px, 40px, 400, 'Roboto Slab', 0.0074em),
-  headline: mat.define-typography-level(22px, 32px, 400, 'Roboto Slab', 0em),
-  title: mat.define-typography-level(18px, 32px, 500, 'Roboto Slab', 0.0075em),
-  subheading-2: mat.define-typography-level(14px, 28px, 400, 'Roboto Slab', 0.0094em),
-  subheading-1: mat.define-typography-level(13px, 24px, 500, 'Roboto Slab', 0.0067em),
-  body-2: mat.define-typography-level(12px, 24px, 500, 'Roboto Slab', 0.0179em),
-  body-1: mat.define-typography-level(12px, 20px, 400, 'Roboto Slab', 0.0179em),
-  button: mat.define-typography-level(12px, 14px, 500, 'Roboto', 0.0893em),
-  caption: mat.define-typography-level(10px, 20px, 400, 'Roboto', 0.0333em),
+  display-4: mat.define-typography-level(112px, 112px, 300, 'Roboto Slab', -0.0134em),
+  display-3: mat.define-typography-level(56px, 56px, 400, 'Roboto Slab', -0.0089em),
+  display-2: mat.define-typography-level(45px, 48px, 400, 'Roboto Slab', 0em),
+  display-1: mat.define-typography-level(34px, 40px, 400, 'Roboto Slab', 0.0074em),
+  headline: mat.define-typography-level(24px, 32px, 400, 'Roboto Slab', 0em),
+  title: mat.define-typography-level(20px, 32px, 500, 'Roboto Slab', 0.0075em),
+  subheading-2: mat.define-typography-level(16px, 28px, 400, 'Roboto Slab', 0.0094em),
+  subheading-1: mat.define-typography-level(15px, 24px, 500, 'Roboto Slab', 0.0067em),
+  body-2: mat.define-typography-level(14px, 24px, 500, 'Roboto Slab', 0.0179em),
+  body-1: mat.define-typography-level(14px, 20px, 400, 'Roboto Slab', 0.0179em),
+  button: mat.define-typography-level(14px, 14px, 500, 'Roboto', 0.0893em),
+  caption: mat.define-typography-level(12px, 20px, 400, 'Roboto', 0.0333em),
   input: mat.define-typography-level(inherit, 1.125, 400, 'Roboto', 1.5px),
 );
 
@@ -28,6 +28,41 @@ $fontConfig: (
 
 // Specific component overrides, pieces that are not in line with the general theming
 // Handle buttons appropriately, with respect to line-height
+
+//* MAT-ICON
+$extra-small-icon: 1em;
+$small-icon: 1.5em;
+$medium-icon: 2em;
+$large-icon: 2.5em;
+
+.mat-icon {
+  vertical-align: middle !important;
+  height: 1em !important;
+  width: 1em !important;
+  line-height: 1em !important;
+
+  &.extra-small {
+    font-size: $extra-small-icon;
+  }
+
+  &.small {
+    font-size: $small-icon;
+  }
+
+  &.medium {
+    font-size: $medium-icon;
+  }
+
+  &.large {
+    font-size: $large-icon;
+  }
+}
+
+.mat-accent.mat-focused .mat-form-field-prefix {
+  transition: color 300ms cubic-bezier(0.55, 0, 0.55, 0.2);
+  color: var(--stockfolio-accent-main);
+}
+//* MAT-ICON
 
 //* MAT-BUTTON
 .mat-raised-button,
@@ -46,42 +81,53 @@ $fontConfig: (
 .stockfolio-loading .mat-button-wrapper {
   visibility: hidden;
 }
-//* MAT-BUTTON
 
-//* MAT-ICON
-.mat-icon {
-  vertical-align: middle !important;
-
+.mat-icon-button {
   &.extra-small {
-    font-size: 0.5em !important;
-    height: 0.5em !important;
-    width: 0.5em !important;
+    height: calc($extra-small-icon * 1.66666667);
+    width: calc($extra-small-icon * 1.66666667);
+    line-height: calc($extra-small-icon * 1.66666667);
+    .mat-icon {
+      font-size: $extra-small-icon;
+    }
   }
 
   &.small {
-    font-size: 1em !important;
-    height: 1em !important;
-    width: 1em !important;
+    height: calc($small-icon * 1.66666667);
+    width: calc($small-icon * 1.66666667);
+    line-height: calc($small-icon * 1.66666667);
+    .mat-icon {
+      font-size: $small-icon;
+    }
   }
 
   &.medium {
-    font-size: 1.5em !important;
-    height: 1.5em !important;
-    width: 1.5em !important;
+    height: calc($medium-icon * 1.66666667);
+    width: calc($medium-icon * 1.66666667);
+    line-height: calc($medium-icon * 1.66666667);
+    .mat-icon {
+      font-size: $medium-icon;
+    }
   }
 
   &.large {
-    font-size: 2em !important;
-    height: 2em !important;
-    width: 2em !important;
+    height: calc($large-icon * 1.66666667);
+    width: calc($large-icon * 1.66666667);
+    line-height: calc($large-icon * 1.66666667);
+    .mat-icon {
+      font-size: $large-icon;
+    }
+  }
+
+  .mat-button-ripple {
+    font-size: inherit;
+    width: inherit;
+    height: inherit;
+    line-height: inherit;
   }
 }
 
-.mat-accent.mat-focused .mat-form-field-prefix{
-  transition: color 300ms cubic-bezier(0.55, 0, 0.55, 0.2);
-  color: var(--stockfolio-accent-main);
-}
-//* MAT-ICON
+//* MAT-BUTTON
 
 .mat-autocomplete-panel.width-inherited {
   width: inherit !important; // Used to be able to inherit width in parent fixed elements of autocomplete-panel
@@ -90,8 +136,6 @@ $fontConfig: (
 .mat-form-field-label-wrapper {
   user-select: none;
 }
-
-
 
 .stockfolio-loading .mat-progress-spinner {
   position: absolute;

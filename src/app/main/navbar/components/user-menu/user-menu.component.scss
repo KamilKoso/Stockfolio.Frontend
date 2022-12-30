@@ -1,0 +1,45 @@
+:host ::ng-deep {
+  .menu-items-group {
+    margin-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .section-divider {
+    border-bottom: 1px solid var(--stockfolio-background-color-20);
+  }
+
+  .user-info-section {
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    font-size: 14px;
+
+    .avatar {
+      grid-row: span 2;
+      height: 50px;
+      width: 50px;
+      aspect-ratio: auto 50 / 50;
+    }
+  }
+
+  .mat-menu-item {
+    line-height: unset;
+    height: 30px;
+    padding-right: 0;
+
+    .mat-icon:nth-of-type(2) {
+      float: right;
+      margin-right: 3px;
+    }
+  }
+
+  .selectable-list-item {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+
+    span {
+      grid-column: 2;
+    }
+  }
+}

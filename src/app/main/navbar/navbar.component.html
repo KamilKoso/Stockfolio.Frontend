@@ -2,13 +2,19 @@
 <mat-toolbar class="navbar" [class.mat-elevation-z8]="isOnTop$ | async" [class.hideNavbar]="shouldHideNavbar$ | async">
   <a class="nav-title" routerLink="/">Stockfolio</a>
 
-   <ng-container *ngIf="(authStatus$ | async) === false">
+  <ng-container *ngIf="(authStatus$ | async) === false">
     <a mat-button class="login-btn" routerLinkActive="menu-item-active" routerLink="/login"> <mat-icon>person</mat-icon> Login </a>
   </ng-container>
 
   <ng-container *ngIf="user$ | async as user">
     <stockfolio-quotes-serach-bar></stockfolio-quotes-serach-bar>
-    <button mat-icon-button class="avatar"><mat-icon>account_circle</mat-icon></button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="avatar">
+      <stockfolio-user-avatar></stockfolio-user-avatar>
+    </button>
+    <mat-menu #menu="matMenu" classList="user-menu">
+      <ng-template matMenuContent>
+        <stockfolio-user-menu [user]="user"></stockfolio-user-menu>
+      </ng-template>
+    </mat-menu>
   </ng-container>
 </mat-toolbar>
-

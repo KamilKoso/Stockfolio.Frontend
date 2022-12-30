@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, Observable, ReplaySubject, Subject, tap, throwError } from 'rxjs';
+import { catchError, map, Observable, ReplaySubject, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StockfolioHttpClient } from '../http/stockfolio-http-client.service';
 import { LoginRequest } from './models/login-request';
@@ -24,11 +24,15 @@ export class UserService {
     );
   }
 
+  signout(): Observable<void> {
+    return this._http.post(`${environment.apiUrl}/account/sign-out`).pipe(tap<void>(() => this.userSubject.next(null)));
+  }
+
   getUser(): Observable<User> {
     return this._http.get<User>(`${environment.apiUrl}/account`).pipe(
       tap(user => this.userSubject.next(user)),
       catchError(err => {
-        if(err.status === 401 || err.status === 0) {
+        if (err.status === 401 || err.status === 0) {
           this.userSubject.next(null);
         }
         return throwError(() => err);

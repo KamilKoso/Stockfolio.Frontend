@@ -1,9 +1,19 @@
+@import '~normalize.css';
 @import 'responsive.mixin';
 @import 'variables';
 @import 'theme';
 @import 'main';
 
-
 body {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
 }

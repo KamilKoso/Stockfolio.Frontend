@@ -20,7 +20,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   }
 
   handleHttpErrors(err: HttpErrorResponse) {
-      console.log(err.status);
     switch (err.status) {
       case 0: {
         this.handle0StatusCode();

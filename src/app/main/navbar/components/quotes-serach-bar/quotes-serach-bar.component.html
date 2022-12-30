@@ -1,25 +1,31 @@
 <mat-form-field floatLabel="never" class="search">
   <mat-icon matPrefix>search</mat-icon>
-  <input matInput [placeholder]="'navbar.searchbar.placeholder' | translate" type="text" [matAutocomplete]="searchSuggestions" [formControl]="searchField" />
-  <mat-autocomplete #searchSuggestions="matAutocomplete" class="max-height-512" (optionSelected)="navigateToStock($event.option.value)" [displayWith]="autocompleteDisplayFunction">
+  <input
+    matInput
+    [placeholder]="'navbar.searchbar.placeholder' | translate"
+    type="text"
+    [matAutocomplete]="searchSuggestions"
+    [formControl]="searchField" />
+  <mat-autocomplete #searchSuggestions="matAutocomplete" class="max-height-512" [displayWith]="autocompleteDisplayFunction">
     <ng-container *ngIf="searchResult$ | async as searchResult">
       <ng-container *ngIf="searchResult.count; else emptySearchResult">
         <mat-option [value]="quote" *ngFor="let quote of searchResult.quotes">
-          <div class="search-item-grid">
-            <span class="stock-name">{{quote.shortName}}</span>
-            <span class="price">{{quote.price | stockfolioCurrency: quote.currency }} <stockfolio-percentage-change-label [percentage]="quote.priceChangePercentage"></stockfolio-percentage-change-label></span>
-            <span class="symbol">{{quote.exchangeDisplayName | uppercase}}:{{ quote.symbol }}</span>
-          </div>
+          <a class="search-item-grid" [routerLink]="'quote/' + quote.symbol">
+            <span class="stock-name">{{ quote.shortName }}</span>
+            <span class="price"
+              >{{ quote.price | stockfolioCurrency: quote.currency }}
+              <stockfolio-percentage-change-label [percentage]="quote.priceChangePercentage"></stockfolio-percentage-change-label
+            ></span>
+            <span class="symbol">{{ quote.exchangeDisplayName | uppercase }}:{{ quote.symbol }}</span>
+          </a>
         </mat-option>
         <div class="summary">
-          {{ 'navbar.searchResults.summary' | translate: {count: searchResult.count, responseTimeMs: searchResult.responseTimeInMs} }}
+          {{ 'navbar.searchResults.summary' | translate: { count: searchResult.count, responseTimeMs: searchResult.responseTimeInMs } }}
         </div>
       </ng-container>
-      <ng-template #emptySearchResult><mat-option>
-        <mat-icon>cyclone</mat-icon> {{ 'navbar.searchResults.notFound' | translate }}
-      </mat-option>
-    </ng-template>
+      <ng-template #emptySearchResult
+        ><mat-option><mat-icon>cyclone</mat-icon> {{ 'navbar.searchResults.notFound' | translate }} </mat-option>
+      </ng-template>
     </ng-container>
   </mat-autocomplete>
 </mat-form-field>
-
