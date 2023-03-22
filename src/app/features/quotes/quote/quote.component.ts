@@ -8,12 +8,15 @@ import { StockMarketService } from 'src/app/shared/services/stockmarket/stock-ma
   styleUrls: ['./quote.component.scss'],
 })
 export class QuoteComponent implements OnDestroy {
-  destroySubject$ = new Subject<void>();
+  private destroySubject$ = new Subject<void>();
   quote$ = this._route.params.pipe(
     switchMap(params => this._stockMarketService.getQuoteDetails([params['symbol']])),
     map(value => value[0]),
     takeUntil(this.destroySubject$)
   );
+
+  quoteChart$ = this._route.params.pipe(switchMap(params => this._stockMarketService.getHistoricalData(params['symbol'], '1d', '1y')));
+
   constructor(private _route: ActivatedRoute, private _stockMarketService: StockMarketService) {}
 
   ngOnDestroy(): void {

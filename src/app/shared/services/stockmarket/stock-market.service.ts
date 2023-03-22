@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, ReplaySubject, Subject, tap, throwError } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StockfolioHttpClient } from '../http/stockfolio-http-client.service';
 import { Quote } from './models/quote';
 import { QuoteDetails } from './models/quote-details';
+import { QuoteHistoricalData } from './models/quote-historical-data';
 import { SearchQuotesResponse } from './models/search-quotes-response';
 
 @Injectable({ providedIn: 'root' })
@@ -31,5 +32,17 @@ export class StockMarketService {
         return value;
       })
     );
+  }
+
+  getHistoricalData(
+    symbol: string,
+    interval = '1d',
+    range?: Nullable<string>,
+    start?: Nullable<Date>,
+    end?: Nullable<Date>
+  ): Observable<QuoteHistoricalData> {
+    return this._http.get<QuoteHistoricalData>(`${environment.apiUrl}/quotes/historical-data/${symbol}`, {
+      queryParams: { interval, range, start, end },
+    });
   }
 }

@@ -1,4 +1,3 @@
-
 // Light Theme Text
 $dark-text: #000000;
 $dark-primary-text: rgba($dark-text, 0.87);
@@ -8,16 +7,15 @@ $dark-dividers: rgba($dark-primary-text, 0.12);
 $dark-focused: rgba($dark-primary-text, 0.12);
 
 // Light Theme Background
-$light-background:    #ffffff;
-$light-bg-darker-5:   darken($light-background, 5%);
-$light-bg-darker-10:  darken($light-background, 10%);
-$light-bg-darker-20:  darken($light-background, 20%);
-$light-bg-darker-30:  darken($light-background, 30%);
-$light-bg-lighter-5:  lighten($light-background, 5%);
-$dark-bg-tooltip:     lighten(#212121, 20%);
-$dark-bg-alpha-4:     rgba(#212121, 0.04);
-$dark-bg-alpha-12:    rgba(#212121, 0.12);
-
+$light-background: #ffffff;
+$light-bg-darker-5: darken($light-background, 5%);
+$light-bg-darker-10: darken($light-background, 10%);
+$light-bg-darker-20: darken($light-background, 20%);
+$light-bg-darker-30: darken($light-background, 30%);
+$light-bg-lighter-5: lighten($light-background, 5%);
+$dark-bg-tooltip: lighten(#212121, 20%);
+$dark-bg-alpha-4: rgba(#212121, 0.04);
+$dark-bg-alpha-12: rgba(#212121, 0.12);
 
 // Dark Theme Text
 $light-text: #ffffff;
@@ -28,21 +26,44 @@ $light-dividers: rgba($light-primary-text, 0.12);
 $light-focused: rgba($light-primary-text, 0.12);
 
 // Dark Theme Background
-$dark-background:     #212121;
-$dark-bg-lighter-5:   lighten($dark-background, 5%);
-$dark-bg-lighter-10:  lighten($dark-background, 10%);
-$dark-bg-lighter-20:  lighten($dark-background, 20%);
-$dark-bg-lighter-30:  lighten($dark-background, 30%);
-$light-bg-alpha-4:    rgba(#ffffff, 0.04);
-$light-bg-alpha-12:   rgba(#ffffff, 0.12);
+$dark-background: #212121;
+$dark-bg-lighter-5: lighten($dark-background, 5%);
+$dark-bg-lighter-10: lighten($dark-background, 10%);
+$dark-bg-lighter-20: lighten($dark-background, 20%);
+$dark-bg-lighter-30: lighten($dark-background, 30%);
+$light-bg-alpha-4: rgba(#ffffff, 0.04);
+$light-bg-alpha-12: rgba(#ffffff, 0.12);
 
 // Price changes
-$price-gain-text: #198f40;
-$price-gain-background: transparentize(lighten($price-gain-text, 0.9), 0.9);
+$gain-text: #198f40;
+$gain-background: transparentize(lighten($gain-text, 0.9), 0.9);
 
-$no-price-change-text: #545a5e;
-$no-price-change-background: transparentize(lighten($no-price-change-text, 0.9), 0.9);
+$no-change-text: #545a5e;
+$no-change-background: transparentize(lighten($no-change-text, 0.9), 0.9);
 
+$loss-text: #c71313;
+$loss-background: transparentize(lighten($loss-text, 0.9), 0.9);
 
-$price-loss-text: #c71313;
-$price-loss-background: transparentize(lighten($price-loss-text, 0.9), 0.9);
+@include generateColors(
+  (
+    gain-text: $gain-text,
+    gain-background: $gain-background,
+    no-change-text: $no-change-text,
+    no-change-background: $no-change-background,
+    loss-text: $loss-text,
+    loss-background: $loss-background,
+  )
+);
+
+$breakpoints: (
+  // Extra small devices (portrait phones: less than 576px)
+  XS: 575.98px,
+  // Small devices (landscape phones: less than 768px)
+  SM: 767.98px,
+  // Medium devices (tablets: less than 992px)
+  MD: 991.98px,
+  // Large devices (desktops: less than 1200px)
+  LG: 1199.98px,
+  // Extra large devices (large desktops)
+  XL: 1399.98px
+) !default;

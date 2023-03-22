@@ -1,57 +1,36 @@
-
-@mixin generateColors($prefix, $palette) {
-  $colors-map: ();
-
-  @each $key, $value in $palette {
-    @if $key !=contrast {
-      .stockfolio-#{$prefix}-#{$key} {
-        color: map-get($palette, $key);
-      }
-
-    $map: ();
-    $map: map-merge($map, ($key: $value));
-    $colors-map: map-merge($colors-map, $map);
-    }
-  }
-
-  :root {
-    @each $key, $value in $colors-map {
-      --stockfolio-#{$prefix}-#{$key}: #{$value};
-    }
-  }
-}
-
 @mixin generate-material-classes {
-   @include generateColors(primary, $mat-primary);
-   @include generateColors(accent, $mat-accent);
-   @include generateColors(warning, $mat-warn);
+  @include generateColors($mat-primary, primary);
+  @include generateColors($mat-accent, accent);
+  @include generateColors($mat-warn, warning);
 }
-
 
 $mat-primary: (
   main: #757575,
   lighter: #d6d6d6,
   darker: #585858,
-  200: #757575, // For slide toggle,
-  contrast : (
-    main: $light-primary-text,
-    lighter: $dark-primary-text,
-    darker: $light-primary-text,
-  )
+  200: #757575,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
 );
 $theme-primary: mat.define-palette($mat-primary, main, lighter, darker);
-
 
 $mat-accent: (
   main: #0097a7,
   lighter: #b3e0e5,
   darker: #007a8c,
-  200: #0097a7, // For slide toggle,
-  contrast : (
-    main: $light-primary-text,
-    lighter: $dark-primary-text,
-    darker: $light-primary-text,
-  )
+  200: #0097a7,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
 );
 $theme-accent: mat.define-palette($mat-accent, main, lighter, darker);
 
@@ -59,15 +38,15 @@ $mat-warn: (
   main: #b00020,
   lighter: #e7b3bc,
   darker: #970013,
-  200: #b00020, // For slide toggle,
-  contrast : (
-    main: $light-primary-text,
-    lighter: $dark-primary-text,
-    darker: $light-primary-text,
-  )
+  200: #b00020,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
 );
 $theme-warn: mat.define-palette($mat-warn, main, lighter, darker);
 
 @include generate-material-classes();
-
-

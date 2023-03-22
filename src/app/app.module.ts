@@ -12,6 +12,7 @@ import { FeaturesModule } from './features/features.module';
 import { MainModule } from './main/main.module';
 import { SharedModule } from './shared/shared.module';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -21,7 +22,6 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     MainModule,
     SharedModule,
-
     TranslateModule.forRoot({
       defaultLanguage: 'en-US',
       loader: {

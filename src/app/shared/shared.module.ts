@@ -19,6 +19,11 @@ import { PercentageChangeLabelComponent } from './components/percentage-change-l
 import { AbsoluteNumberPipe } from './pipes/absolute-number.pipe';
 import { StockfolioCurrencyPipe } from './pipes/stockfolio-currency.pipe';
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
+import { NgChartsModule } from 'ng2-charts';
+import { StockfolioChartComponent } from './components/stockfolio-chart/stockfolio-chart.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { StockfolioSkeletonLoaderComponent } from './components/stockfolio-skeleton-loader/stockfolio-skeleton-loader.component';
+import { NgxVarDirective } from './directives/ngx-var/ngx-var.directive';
 
 const imports = [
   CommonModule,
@@ -28,9 +33,17 @@ const imports = [
   MaterialModule,
   LoadingBarHttpClientModule,
   TranslateModule,
+  NgChartsModule,
+  NgxSkeletonLoaderModule,
 ];
-const components = [StockfolioErrorMessageComponent, PercentageChangeLabelComponent, UserAvatarComponent];
-const directives = [ShowPasswordDirective, StockfolioButtonWithSpinnerDirective, StockfolioTooltipOnOverflowDirective];
+const components = [
+  StockfolioErrorMessageComponent,
+  PercentageChangeLabelComponent,
+  UserAvatarComponent,
+  StockfolioChartComponent,
+  StockfolioSkeletonLoaderComponent,
+];
+const directives = [ShowPasswordDirective, StockfolioButtonWithSpinnerDirective, StockfolioTooltipOnOverflowDirective, NgxVarDirective];
 const pipes = [ApiErrorTranslatedPipe, AbsoluteNumberPipe, StockfolioCurrencyPipe];
 
 @NgModule({

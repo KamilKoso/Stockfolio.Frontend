@@ -1,16 +1,3 @@
-$breakpoints: (
-  // Extra small devices (portrait phones: less than 576px)
-  XS: 575.98px,
-  // Small devices (landscape phones: less than 768px)
-  SM: 767.98px,
-  // Medium devices (tablets: less than 992px)
-  MD: 991.98px,
-  // Large devices (desktops: less than 1200px)
-  LG: 1199.98px,
-  // Extra large devices (large desktops)
-  XL: 1399.98px
-) !default;
-
 @mixin breakpoint-up($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
     @media (max-width: map-get($breakpoints, $breakpoint)) {
@@ -41,5 +28,31 @@ $breakpoints: (
   } @else {
     @warn "`#{$breakpointDown}` or `#{$breakpointUp}` is not defined breakpoint." +
           "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin generateColors($palette, $prefix: '') {
+  $colors-map: ();
+  @each $key, $value in $palette {
+    @if $key != contrast {
+      $map: ();
+      $map: map-merge(
+        $map,
+        (
+          $key: $value,
+        )
+      );
+      $colors-map: map-merge($colors-map, $map);
+    }
+  }
+
+  :root {
+    @each $key, $value in $colors-map {
+      @if $prefix != '' {
+        --stockfolio-#{$prefix}-#{$key}: #{$value};
+      } @else {
+        --stockfolio-#{$key}: #{$value};
+      }
+    }
   }
 }

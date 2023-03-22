@@ -1,5 +1,3 @@
-@import 'variables';
-
 .percentage-change-label {
   display: inline-flex;
   justify-content: center;
@@ -15,16 +13,16 @@
 }
 
 .no-change {
-  color: $no-price-change-text;
-  background-color: $no-price-change-background
+  color: var(--stockfolio-no-change-text);
+  background-color: var(--stockfolio-no--change-background);
 }
 
 .positive-change {
-  color: $price-gain-text;
-  background-color: $price-gain-background;
+  color: var(--stockfolio-gain-text);
+  background-color: var(--stockfolio-gain-background);
 }
 
 .negative-change {
-  color: $price-loss-text;
-  background-color: $price-loss-background;
+  color: var(--stockfolio-loss-text);
+  background-color: var(--stockfolio-loss-background);
 }

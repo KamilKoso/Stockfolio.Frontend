@@ -1,7 +1,7 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Injector, Input, OnInit, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, Optional } from '@angular/core';
 import { AbstractControl, FormGroupDirective } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { EMPTY, filter, Observable, of, switchMap, tap } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector

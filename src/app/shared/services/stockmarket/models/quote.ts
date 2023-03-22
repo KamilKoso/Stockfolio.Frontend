@@ -16,6 +16,7 @@ export class Quote {
   previousClosePrice: number;
   currency: string;
 
+
   get priceChangeSincePreviousClose() {
     return this.price - this.previousClosePrice;
   }

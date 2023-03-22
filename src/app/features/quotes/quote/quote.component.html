@@ -1,1 +1,11 @@
-{{ (quote$ | async).averageDailyVolume10Day }}
+<mat-card>
+   <ng-container *ngIf="quote$ | async as quote; else loader">
+
+  </ng-container>
+  <stockfolio-quote-chart [data]="quoteChart$ | async"></stockfolio-quote-chart>
+
+  <ng-template #loader>
+    <stockfolio-skeleton-loader class="h-100"></stockfolio-skeleton-loader>
+  </ng-template>
+</mat-card>
+

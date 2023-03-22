@@ -38,7 +38,7 @@ enum Views {
 export class UserMenuComponent {
   @Input() user: User;
   currentLang$ = this._languageService.language$;
-  currentTheme$ = this._themeService.theme$;
+  currentTheme$ = this._themeService.selectedTheme$;
   view: Views = Views.Initial;
   views = Views;
   supportedLanguages = this._languageService.supportedLanguages;

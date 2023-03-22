@@ -11,6 +11,6 @@ import { UserService } from './shared/services/user/user.service';
 export class AppComponent {
   constructor(_userService: UserService, _themeService: ThemeService) {
     _userService.getUser().subscribe();
-    _themeService.theme$.subscribe();
+    _themeService.selectedTheme$.subscribe();
   }
 }

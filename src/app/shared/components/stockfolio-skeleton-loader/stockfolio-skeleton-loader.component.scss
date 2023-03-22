@@ -1,0 +1,24 @@
+:root.stockfolio-dark-theme {
+  :host::ng-deep {
+    .skeleton-loader {
+      background-color: var(--stockfolio-background-color);
+    }
+  }
+}
+
+:root.stockfolio-light-theme {
+  :host::ng-deep {
+    .skeleton-loader {
+      background-color: var(--stockfolio-background-color-10);
+    }
+  }
+}
+
+:host::ng-deep {
+  ngx-skeleton-loader,
+  .skeleton-loader {
+    width: inherit !important;
+    height: inherit !important;
+    margin: inherit !important;
+  }
+}
