@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Chart, registerables, ChartConfiguration, TimeScaleOptions } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import 'chartjs-plugin-annotation';
@@ -11,31 +11,30 @@ import * as Locales from 'date-fns/locale';
 import { LanguageService } from '../../services/language/language.service';
 import { Subscription } from 'rxjs';
 
+const DEFAULT_ANIMATIONS_DURATION = 700
 
 @Component({
   selector: 'stockfolio-chart',
   templateUrl: './stockfolio-chart.component.html',
   styleUrls: ['./stockfolio-chart.component.scss'],
 })
-export class StockfolioChartComponent implements AfterViewInit, OnDestroy, OnInit {
+export class StockfolioChartComponent implements OnDestroy, OnInit {
   @ViewChild(BaseChartDirective, { read: ElementRef }) chartCanvas: ElementRef;
   @ViewChild(BaseChartDirective) chartDirective: BaseChartDirective;
   _chartDataMapped: ChartConfiguration['data'];
-  _chartData: StockfolioChartData;
   _chartOptions: StockfolioChartOptions;
 
   languageChangeSubscription: Subscription;
 
   @Input() set data(value: StockfolioChartData) {
-    this._chartData = value;
-    this.mapChartData();
+    this.mapChartData(value);
     this.chartDirective?.update();
   }
 
   @Input() set options(value: StockfolioChartOptions) {
-    // Makes sure to trigger change detection if
-    this._chartOptions = {...value};
-  };
+    // Makes sure to trigger change detection if needed
+    this._chartOptions = { ...value };
+  }
 
   constructor(private languageService: LanguageService) {
     Chart.register(...registerables);
@@ -45,24 +44,58 @@ export class StockfolioChartComponent implements AfterViewInit, OnDestroy, OnIni
     this.handleLanguageChange();
   }
 
-  ngAfterViewInit(): void {
-    this.mapChartData();
-  }
-
   ngOnDestroy(): void {
     this.languageChangeSubscription?.unsubscribe();
   }
 
-  private mapChartData(): void {
-    if (!this._chartData) return;
+  private mapChartData(chartData: StockfolioChartData): void {
+    this._chartDataMapped = { ...chartData };
 
-    this._chartDataMapped = this._chartData;
+    if (chartData) {
+      for (let stockfiolioDataSet of chartData.datasets) {
+        if (stockfiolioDataSet.colorMode != null) {
+          this.handleColorModes(stockfiolioDataSet);
+        }
 
-    for (let stockfiolioDataSet of this._chartData.datasets) {
-      if (stockfiolioDataSet.colorMode != null) {
-        this.handleColorModes(stockfiolioDataSet);
+        switch(stockfiolioDataSet.type) {
+          case "bar": {
+            this.handleBarChart(stockfiolioDataSet)
+            break;
+          }
+          case "line": {
+            this.handleLineChart(stockfiolioDataSet)
+            break;
+          }
+        }
       }
     }
+  }
+
+  private handleLineChart(dataset) {
+    dataset.animations = {
+      x: {
+        type: 'number',
+        from: NaN,
+        delay(ctx) {
+          return ctx.index * DEFAULT_ANIMATIONS_DURATION  / ctx.dataset.data.length;
+        },
+      },
+    };
+  }
+
+  private handleBarChart(dataset) {
+    dataset.animations = {
+      y: {
+        type: 'number',
+        duration: DEFAULT_ANIMATIONS_DURATION,
+        from(ctx) {
+          return ctx.raw === 0 ? NaN : ctx.raw
+        },
+        delay(ctx) {
+          return ctx.index * DEFAULT_ANIMATIONS_DURATION / ctx.dataset.data.length;
+        },
+      },
+    };
   }
 
   private updateLocale(locale: Locale): void {
@@ -92,7 +125,7 @@ export class StockfolioChartComponent implements AfterViewInit, OnDestroy, OnIni
       dataset.gradientDirection?.y1 ?? 500
     );
     gradient.addColorStop(1, dataset.gradientColorStop ?? 'rgba(0,0,0,0)');
-    console.log(dataset.colorMode);
+
     switch (dataset.colorMode) {
       case StockfolioChartColorMode.Gradient: {
         dataset.borderColor = dataset.color;

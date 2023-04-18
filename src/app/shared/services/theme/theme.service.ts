@@ -51,7 +51,6 @@ ok
     map(() => {
       const styles = getComputedStyle(this.root);
       const colors = {};
-      console.log(this.scssColorVariables);
 
       this.scssColorVariables.forEach(variable => {
         colors[variable.substring(2, variable.length)] = new Color(styles.getPropertyValue(variable).trim());

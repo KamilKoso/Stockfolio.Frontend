@@ -1,0 +1,8 @@
+<mat-tab-group [color]="color" class="stockfolio-button-toggle-group" (selectedTabChange)="tabChanged($event)" [(selectedIndex)]="selectedIndex" >
+  <mat-tab *ngFor="let button of buttons" [disabled]="disabled || button.disabled">
+    <ng-template mat-tab-label>
+      <ng-container *ngTemplateOutlet="button.buttonTemplate"></ng-container>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
+

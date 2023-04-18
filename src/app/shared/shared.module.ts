@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { StockfolioButtonWithSpinnerDirective } from './directives/stockfolio-button-with-spinner/stockfolio-button-with-spinner.directive';
@@ -24,10 +24,13 @@ import { StockfolioChartComponent } from './components/stockfolio-chart/stockfol
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { StockfolioSkeletonLoaderComponent } from './components/stockfolio-skeleton-loader/stockfolio-skeleton-loader.component';
 import { NgxVarDirective } from './directives/ngx-var/ngx-var.directive';
+import { StockfolioButtonToggleGroupComponent } from './components/stockfolio-button-toggle-group/stockfolio-button-toggle-group.component';
+import { StockfolioButtonToggleComponent } from './components/stockfolio-button-toggle-group/stockfolio-button-toggle/stockfolio-button-toggle.component';
 
 const imports = [
   CommonModule,
   RouterModule,
+  FormsModule,
   ReactiveFormsModule,
   HttpClientModule,
   MaterialModule,
@@ -42,6 +45,8 @@ const components = [
   UserAvatarComponent,
   StockfolioChartComponent,
   StockfolioSkeletonLoaderComponent,
+  StockfolioButtonToggleGroupComponent,
+  StockfolioButtonToggleComponent,
 ];
 const directives = [ShowPasswordDirective, StockfolioButtonWithSpinnerDirective, StockfolioTooltipOnOverflowDirective, NgxVarDirective];
 const pipes = [ApiErrorTranslatedPipe, AbsoluteNumberPipe, StockfolioCurrencyPipe];

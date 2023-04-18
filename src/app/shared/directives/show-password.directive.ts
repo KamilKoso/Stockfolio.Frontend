@@ -2,7 +2,7 @@ import { Directive, HostListener, Input } from '@angular/core';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
-  selector: '[showPassword]',
+  selector: 'input[showPassword]',
 })
 export class ShowPasswordDirective {
   @Input() showPassword: HTMLInputElement;

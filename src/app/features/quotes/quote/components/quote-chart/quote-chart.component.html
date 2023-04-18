@@ -1,0 +1,5 @@
+<stockfolio-button-toggle-group color="accent" (change)="selectedDateRangeSubject$.next($event)" [ngModel]="selectedDateRange$ | async">
+  <stockfolio-button-toggle *ngFor="let dateRange of chartDateRanges" [value]="dateRange">{{ dateRange.displayText }}</stockfolio-button-toggle>
+</stockfolio-button-toggle-group>
+<stockfolio-chart [data]="chartDataMapped$ | async" [options]="chartOptions"></stockfolio-chart>
+

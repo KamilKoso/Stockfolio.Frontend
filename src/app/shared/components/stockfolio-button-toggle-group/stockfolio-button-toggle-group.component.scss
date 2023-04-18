@@ -1,0 +1,22 @@
+:host ::ng-deep .stockfolio-button-toggle-group {
+  .mat-tab-body-wrapper {
+    display: none;
+  }
+
+  .mat-tab-header {
+    border-bottom: none;
+  }
+
+  .mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled),
+  .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+    opacity: 1;
+  }
+
+  &.mat-accent .mat-tab-label-active .mat-tab-label-content {
+    color: var(--stockfolio-accent-main);
+  }
+
+  &.mat-primary .mat-tab-label-active .mat-tab-label-content {
+    color: var(--stockfolio-primary-main);
+  }
+}
