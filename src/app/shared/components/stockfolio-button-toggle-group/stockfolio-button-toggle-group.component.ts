@@ -42,7 +42,6 @@ export class StockfolioButtonToggleGroupComponent implements ControlValueAccesso
 
   ngAfterViewInit(): void {
     this._cdr.detectChanges();
-    this.selectedIndex = this.buttons["_results"]?.findIndex(x => x.value === this._value);
   }
 
   writeValue(obj: any): void {
